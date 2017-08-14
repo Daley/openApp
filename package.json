@@ -1,0 +1,25 @@
+{
+  "name": "open-app",
+  "version": "0.0.1",
+  "description": "use scheme/universal link to open App in webview/browser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MmmmyPh/openApp.git"
+  },
+  "author": "MmmmyPh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MmmmyPh/openApp/issues"
+  },
+  "homepage": "https://github.com/MmmmyPh/openApp#readme",
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.6.0",
+    "webpack": "^3.5.4"
+  }
+}

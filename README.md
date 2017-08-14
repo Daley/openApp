@@ -1,0 +1,1 @@
+open App width scheme or universal link
