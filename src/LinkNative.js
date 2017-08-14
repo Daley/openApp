@@ -143,7 +143,7 @@ class LinkNative {
 			isChrome: !!ua.match(/Chrome/ig),
 			isUc: !!ua.match(/UCBrowser/ig),
 			isAQQplayI: !!ua.match(/iphone; u;/ig),
-			isMQQBelow6: !!ua.match(/MQQBrowser\/[0-5](.\d+)*/ig)
+			isMQQBelow6: !!ua.match(/MQQBrowser\/[0-6](.\d+)*/ig)
 		};
 
 		this.isFurtherThan9 = () => {
