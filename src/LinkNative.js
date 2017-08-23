@@ -96,24 +96,19 @@ class LinkNative {
 				this.cover();
 				return;
 			}
-
-            // 首先尝试用iframe打开
-			ifm.src = androidScheme;
-            
+			
             // QQ浏览器6.+版本禁用scheme需要从其他浏览器打开
 			if( this.uaList.isMQQBelow6 ){
 				alert('请用其他浏览器打开');
 				return;
 			}
-            
-            // chrome浏览器无法用iframe方法
-			if( this.uaList.isChrome ){
-				window.location.href = androidScheme;
-			}
 
-            // Android中UC为chrome内核，chrome不会在调起app后跳转下载页面，但UC会
-			if( this.uaList.isUc ){
-				ifm.src = androidScheme;
+            // 首先尝试用iframe打开,这样也就能避免Android中UC为chrome内核，chrome本身不会在用window.location调起app后跳转下载页面，但UC会的问题
+			ifm.src = androidScheme;
+            
+            // chrome浏览器无法用iframe方法,但是三星自带浏览器(ua标识为SamsungBrowser)为chrome内核，ifm调起失败后进入这一步会进行window调起，导致跳入shceme页面，当前处理为禁用。
+			if( this.uaList.isChrome && !this.uaList.isSamsung ){
+				window.location.href = androidScheme;
 			}
 
 			timer = setTimeout( () => {
@@ -143,7 +138,8 @@ class LinkNative {
 			isChrome: !!ua.match(/Chrome/ig),
 			isUc: !!ua.match(/UCBrowser/ig),
 			isAQQplayI: !!ua.match(/iphone; u;/ig),
-			isMQQBelow6: !!ua.match(/MQQBrowser\/[0-6](.\d+)*/ig)
+			isMQQBelow6: !!ua.match(/MQQBrowser\/[0-6](.\d+)*/ig),
+			isSamsung: !!ua.match(/SamsungBrowser/ig)
 		};
 
 		this.isFurtherThan9 = () => {
